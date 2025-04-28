@@ -1,0 +1,6 @@
+
+CREATING A REFERENCE IMAGE
+  finding best volumes in the timeseries
+  roughly aligning and averaging those volumes
+
+Exported key variables to: /users/rushworth/gwr089/scratch/Generalization-Preprocess/zach/TEST/epi2d/work/motion_correction_vars.sh

@@ -3,6 +3,12 @@
 
 *.err
 *.out
+*.nii.gz
+*.nii
+
+MrCat-win
+ants-2.6.0/
+debug/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,3 +1,7 @@
 paths:
+  preprocess: /users/rushworth/gwr089/scratch/Generalization-Preprocess
   reconstructed: /well/rushworth/projects/nhp/users/simone/raw/reconstructed
   prepared: /users/rushworth/gwr089/scratch/Generalization-Preprocess/prepared/output
+  struct: /well/rushworth/projects/nhp/users/simone/struct
+  zach: /users/rushworth/gwr089/scratch/Generalization-Preprocess/zach
+  zeno: /users/rushworth/gwr089/scratch/Generalization-Preprocess/zeno

@@ -4,7 +4,6 @@ import shlex # Import shlex for safer quoting
 
 # Determine the project root relative to this submission script
 current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.abspath(os.path.join(current_dir, '..', '..', '..')) # Go up 3 levels from submit/func.py
 
 # Module path (relative to project root, using dots)
 module_path = "preprocessing.prepare.dontsb.func"
@@ -13,14 +12,13 @@ def load_modules():
     module_load_command = "module load fsl" # Adjust if your HPC uses a different command
     return module_load_command
 
-def submit_func(input_file, output_dir):
+def submit_func(input_file, output_file, log_dir="logs", job_name="func_prepare"):
 
     # Ensure paths are absolute before passing to Slurm, especially if chdir is used
     abs_input_file = os.path.abspath(input_file)
-    abs_output_dir = os.path.abspath(output_dir)
+    abs_output_file = os.path.abspath(output_file)
 
     # Define log paths relative to project root or use absolute paths
-    log_dir = os.path.join(project_root, "slurm_logs")
     os.makedirs(log_dir, exist_ok=True) # Ensure log directory exists
     log_basename = f"func_{os.path.basename(abs_input_file)}"
     output_log = os.path.join(log_dir, f"{log_basename}.out")
@@ -30,13 +28,12 @@ def submit_func(input_file, output_dir):
     module_load_command = load_modules()
 
     slurm = Slurm(
-        job_name="func_prepare",
+        job_name=job_name,
         partition="short",
         time="0:05:00",
         output=output_log, # Use absolute or relative-to-project path
         error=error_log,   # Use absolute or relative-to-project path
-        mem='4G',
-        chdir=project_root, # <-- Set the working directory for the job
+        mem='4G'
     )
 
     # Construct the command to execute the module
@@ -45,10 +42,9 @@ def submit_func(input_file, output_dir):
         f"{module_load_command} && " # Load module first
         f"python -m {module_path} "  # Then run python script as module
         f"--input_file {shlex.quote(abs_input_file)} "
-        f"--output_dir {shlex.quote(abs_output_dir)}"
+        f"--output_file {shlex.quote(abs_output_file)}"
     )
 
-    print(f"\033[92mProject Root:\033[0m {project_root}")
     print(f"\033[92mSubmitting command to Slurm:\033[0m")
     print(f"\t{command}")
 

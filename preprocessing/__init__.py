@@ -1,5 +1,7 @@
 
 __all__ = [
-    'prepare'
+    'prepare',
+    'motion_correction',
+    'func2struct'
 ]
 

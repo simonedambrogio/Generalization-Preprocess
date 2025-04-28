@@ -1,8 +1,10 @@
 # Prepare subpackage initialization
 from preprocessing.prepare.prepare import (
-    func
+    func,
+    struct
 )
 
 __all__ = [
-    'func'
+    'func',
+    'struct'
 ] 
