@@ -9,6 +9,8 @@
 MrCat-win
 ants-2.6.0/
 debug/
+**/transform/*
+**/template/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -184,3 +186,5 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+NHP_fMRI_analysis_user_guide_2018_v1.txt
+wrapperGroupTemplate.sh
