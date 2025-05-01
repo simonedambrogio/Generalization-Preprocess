@@ -21,14 +21,20 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--monkey", type=str, required=True)
-    parser.add_argument("--session", nargs="+", type=str, required=True)
+    parser.add_argument("--session", nargs="+", type=str, required=False)
+    parser.add_argument("--task", type=str, required=False)
     parser.add_argument("--submit", action="store_true")
     parser.add_argument("--log_dir", type=str, default="logs")
     parser.add_argument("--job_name", type=str, default="motion_correction")
     args = parser.parse_args()
 
     # Run the main function ------------------------------------------------------
-    for session in args.session:
+    if args.session is None:
+        sessions = config[args.monkey]['task' + args.task]
+    else:
+        sessions = args.session
+
+    for session in sessions:
         job_name = f"mc_{session}"
         log_dir = os.path.join(config['paths'][args.monkey], session, "logs")
         main(config, args.monkey, session, args.submit, log_dir, job_name)
@@ -40,5 +46,7 @@ Example:
     
     python scr/preprocess/motion_correction.py --monkey zach --submit \
         --session MI01063P MI01111P MI01130P MI01132P MI01134P MI01136P
+    
+    python scr/preprocess/motion_correction.py --monkey zach --task 2 --submit
 """
 

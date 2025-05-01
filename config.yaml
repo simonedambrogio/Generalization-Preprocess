@@ -5,3 +5,7 @@ paths:
   struct: /well/rushworth/projects/nhp/users/simone/struct
   zach: /users/rushworth/gwr089/scratch/Generalization-Preprocess/zach
   zeno: /users/rushworth/gwr089/scratch/Generalization-Preprocess/zeno
+
+zach:
+  task1: [MI01049P, MI01051P, MI01060P, MI01062P, MI01063P, MI01108P, MI01111P, MI01115P, MI01118P, MI01130P, MI01132P, MI01134P, MI01136P]
+  task2: [MI01140P, MI01142P, MI01144P, MI01150P, MI01159P, MI01162P, MI01167P]

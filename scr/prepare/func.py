@@ -26,14 +26,20 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--monkey", type=str, required=True)
-    parser.add_argument("--session", nargs="+", type=str, required=True)
+    parser.add_argument("--session", nargs="+", type=str, required=False)
+    parser.add_argument("--task", type=str, required=False)
     parser.add_argument("--submit", action="store_true")
     parser.add_argument("--log_dir", type=str, default="logs")
     parser.add_argument("--job_name", type=str, default="func")
     args = parser.parse_args()
 
     # Run the main function ------------------------------------------------------
-    for session in args.session:
+    if args.session is None:
+        sessions = config[args.monkey]['task' + args.task]
+    else:
+        sessions = args.session
+
+    for session in sessions:
         jobname = f"fslreorient2std_{session}"
         log_dir = os.path.join(config['paths'][args.monkey], session, "logs")
         main(config, args.monkey, session, args.submit, log_dir, jobname)
@@ -42,4 +48,7 @@ if __name__ == "__main__":
 Example:
     python scr/prepare/func.py --monkey zach --session MI01049P --submit
     python scr/prepare/func.py --monkey zach --session MI01051P --submit
+    
+    # Task 2
+    python scr/prepare/func.py --monkey zach --task 2 --submit
 """

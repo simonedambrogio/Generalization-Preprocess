@@ -42,6 +42,6 @@ if __name__ == "__main__":
 
 """
 Example:
-    python scr/prepare/struct.py --monkey zach --session MI01049P --submit --instructions all
+    python scr/prepare/struct.py --monkey zach --session MI01049P --submit
     python scr/prepare/struct.py --monkey zach --session MI01051P --submit --instructions all
 """
