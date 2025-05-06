@@ -49,6 +49,8 @@ Example:
     python scr/prepare/func.py --monkey zach --session MI01049P --submit
     python scr/prepare/func.py --monkey zach --session MI01051P --submit
     
-    # Task 2
     python scr/prepare/func.py --monkey zach --task 2 --submit
+    python scr/prepare/func.py --monkey zach --task 3 --submit
+    python scr/prepare/func.py --monkey zach --task 4 --submit
+    python scr/prepare/func.py --monkey zach --task 5 --submit
 """

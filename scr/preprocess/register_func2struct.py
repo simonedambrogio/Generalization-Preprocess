@@ -23,14 +23,24 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--monkey", type=str, required=True)
-    parser.add_argument("--session", nargs="+", type=str, required=True)
+    parser.add_argument("--session", nargs="+", type=str, required=False)
+    parser.add_argument("--exclude", nargs="+", type=str, required=False)
+    parser.add_argument("--task", type=str, required=False)
     parser.add_argument("--submit", action="store_true")
     parser.add_argument("--log_dir", type=str, default="logs")
     parser.add_argument("--job_name", type=str, default="func2struct")
     args = parser.parse_args()
 
     # Run the main function ------------------------------------------------------
-    for session in args.session:
+    if args.session is None:
+        sessions = config[args.monkey]['task' + args.task]
+    else:
+        sessions = args.session
+
+    if args.exclude is not None:
+        sessions = [session for session in sessions if session not in args.exclude]
+
+    for session in sessions:
         job_name = f"f2s_{session}"
         log_dir = os.path.join(config['paths'][args.monkey], session, "logs")
         main(config, args.monkey, session, args.submit, log_dir, job_name)
@@ -43,10 +53,18 @@ python scr/preprocess/register_func2struct.py \
     --monkey zach --session MI01051P --submit
 ```
 
+python scr/preprocess/register_func2struct.py --monkey zach --session MI01140P --submit
+    
 ```bash
 python scr/preprocess/register_func2struct.py --monkey zach --submit \
     --session MI01060P MI01062P MI01063P MI01108P MI01111P MI01115P \
         MI01118P MI01130P MI01132P MI01134P MI01136P
 ```
+
+```bash
+python scr/preprocess/register_func2struct.py \
+    --monkey zach --task 2 --exclude MI01140P --submit
+```
+
 """
 

@@ -9,6 +9,7 @@ def f2s_dontsb(episeries: str, t1wimg: str, t1wmask: str):
         --t1wmask={t1wmask}
     """
     os.system(command)
+    print(f"Done.")
 
 if __name__ == "__main__":
     import argparse

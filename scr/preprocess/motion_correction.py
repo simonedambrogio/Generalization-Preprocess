@@ -48,5 +48,7 @@ Example:
         --session MI01063P MI01111P MI01130P MI01132P MI01134P MI01136P
     
     python scr/preprocess/motion_correction.py --monkey zach --task 2 --submit
+    python scr/preprocess/motion_correction.py --monkey zach --task 3 --submit
+    python scr/preprocess/motion_correction.py --monkey zach --task 4 --submit
+    python scr/preprocess/motion_correction.py --monkey zach --task 5 --submit
 """
-

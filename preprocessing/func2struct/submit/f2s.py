@@ -35,7 +35,7 @@ def f2s_submit(episeries: str, t1wimg: str, t1wmask: str, log_dir="logs", job_na
         output=output_log, # Use absolute or relative-to-project path
         error=error_log,   # Use absolute or relative-to-project path
         mem='16G',
-        cpus_per_task=2
+        cpus_per_task=4
     )
 
     # Construct the command to execute the module
