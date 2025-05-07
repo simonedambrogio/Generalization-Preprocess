@@ -7,6 +7,9 @@ from preprocessing.prepare.submit.struct import submit_struct
 from preprocessing.prepare.dontsb.group_template import dontsb_grouptemplate
 from preprocessing.prepare.submit.group_template import submit_grouptemplate
 
+from preprocessing.prepare.dontsb.firstlevel import dontsb_firstlevel
+from preprocessing.prepare.submit.firstlevel import submit_firstlevel
+
 def func(input_file, output_file, submit, log_dir="logs", job_name="func_prepare"):
     
     if submit:
@@ -72,3 +75,9 @@ def group_template(
             t1wbase, 
             refmask, 
             useniter)
+
+def firstlevel(sessdir, epidir, transdir, outputdir, standimg, struct2standwarp, submit, log_dir="logs", job_name="firstlevel"):
+    if submit:
+        submit_firstlevel(sessdir, epidir, transdir, outputdir, standimg, struct2standwarp, log_dir, job_name)
+    else:
+        dontsb_firstlevel(sessdir, epidir, transdir, outputdir, standimg, struct2standwarp)

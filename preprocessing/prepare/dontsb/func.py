@@ -4,6 +4,7 @@ from fsl.wrappers import fslreorient2std
 def dontsb_func(input_file, output_file):
     print("Reorienting to standard space...")
     fslreorient2std(input_file, output_file)
+    print("done.")
 
 if __name__ == "__main__":
     import argparse
