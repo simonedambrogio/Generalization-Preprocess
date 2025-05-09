@@ -123,7 +123,7 @@ The core functions generally accept parameters to control execution and job subm
 *   **Underlying Script/Tool:** `fslreorient2std` (from FSL)
 *   **Purpose:** Reorients the functional EPI image to match the FSL standard orientation (MNI152). This is often a preliminary step to ensure consistent orientation before further processing or registration.
 *   **Example Call (Conceptual):**
-    ```python
+```python
     # Assuming similar submit/dontsb structure exists for func reorient
     from preprocessing.prepare.submit import func as submit_func_reorient
 
@@ -142,7 +142,7 @@ The core functions generally accept parameters to control execution and job subm
 *   **Underlying Script:** `MotionCorrection_macaque.sh` (or similar)
 *   **Purpose:** Performs slice-by-slice alignment of the 4D EPI timeseries to a reference volume derived from the series itself, correcting for motion-induced field distortions. Generates motion parameter outputs.
 *   **Example Call (Conceptual):**
-    ```python
+```python
     # Assuming similar submit/dontsb structure exists for motion
     from preprocessing.motion_correction.submit import run as submit_motion
 
@@ -162,7 +162,7 @@ The core functions generally accept parameters to control execution and job subm
 *   **Underlying Script:** `RegisterFuncStruct_macaque.sh` (or similar)
 *   **Purpose:** Registers the mean functional image (e.g., `f_mean.nii.gz` created during motion correction) to the subject's preprocessed structural image (T1w). Generates transformation warps.
 *   **Example Call (Conceptual):**
-    ```python
+```python
     # Assuming similar submit/dontsb structure exists for func2struct
     from preprocessing.func2struct.submit import run as submit_f2s
 

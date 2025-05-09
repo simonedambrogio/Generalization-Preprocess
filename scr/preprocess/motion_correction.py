@@ -53,4 +53,5 @@ Example:
     python scr/preprocess/motion_correction.py --monkey zach --task 5 --submit
     
     python scr/preprocess/motion_correction.py --monkey zeno --task 1 --submit
+    python scr/preprocess/motion_correction.py --monkey zeno --session MI01100P --submit
 """

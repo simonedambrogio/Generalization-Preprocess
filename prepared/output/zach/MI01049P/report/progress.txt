@@ -1,7 +1,0 @@
-
-CREATING A REFERENCE IMAGE
-  finding best volumes in the timeseries
-  roughly aligning and averaging those volumes
-
-PREPARING THE REFERENCE VOLUME
-  extracting the brain

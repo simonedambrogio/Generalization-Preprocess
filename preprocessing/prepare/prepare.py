@@ -10,6 +10,11 @@ from preprocessing.prepare.submit.group_template import submit_grouptemplate
 from preprocessing.prepare.dontsb.firstlevel import dontsb_firstlevel
 from preprocessing.prepare.submit.firstlevel import submit_firstlevel
 
+from preprocessing.prepare.dontsb.nuisancereg import dontsb_nuisancereg
+from preprocessing.prepare.submit.nuisancereg import submit_nuisancereg
+
+from preprocessing.prepare.submit.firstlevel_and_nuisancereg import submit_firstlevel_and_nuisancereg
+
 def func(input_file, output_file, submit, log_dir="logs", job_name="func_prepare"):
     
     if submit:
@@ -81,3 +86,24 @@ def firstlevel(sessdir, epidir, transdir, outputdir, standimg, struct2standwarp,
         submit_firstlevel(sessdir, epidir, transdir, outputdir, standimg, struct2standwarp, log_dir, job_name)
     else:
         dontsb_firstlevel(sessdir, epidir, transdir, outputdir, standimg, struct2standwarp)
+
+def nuisancereg(sessiondir, sdthr, outputdir, dorecursive, dobadvol, domotioncomp, domelodiccomp, epidir, submit, log_dir="logs", job_name="nuisancereg"):
+    if submit:
+        submit_nuisancereg(sessiondir, sdthr, outputdir, dorecursive, dobadvol, domotioncomp, domelodiccomp, epidir, log_dir, job_name)
+    else:
+        dontsb_nuisancereg(sessiondir, sdthr, outputdir, dorecursive, dobadvol, domotioncomp, domelodiccomp, epidir)
+
+def firstlevel_and_nuisancereg(
+    sessdir, epidir, transdir, outputdir, standimg, struct2standwarp,
+    sdthr, dorecursive, dobadvol, domotioncomp, domelodiccomp,
+    submit, log_dir=None, job_name="firstlevel&nuisancereg"):
+    
+    if submit:
+        submit_firstlevel_and_nuisancereg(
+            sessdir, epidir, transdir, outputdir, standimg, struct2standwarp,
+            sdthr, dorecursive, dobadvol, domotioncomp, domelodiccomp,
+            log_dir=log_dir, job_name=job_name)
+    else:
+        dontsb_firstlevel(sessdir, epidir, transdir, outputdir, standimg, struct2standwarp)
+        dontsb_nuisancereg(sessdir, sdthr, outputdir, dorecursive, dobadvol, domotioncomp, domelodiccomp, epidir)
+    
